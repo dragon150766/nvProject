@@ -35,6 +35,7 @@ function CreatePostScreen({ navigation,route }){
   return(
     // use fragment
     <> 
+    <Text style={{fontSize: 25,textAlign:'center'}}> Thai-Nichi Institute of Technology </Text>
     <TextInput style={{height:200,padding:10,backgroundColor:'White',textAlign:'center'}}
     multiline
     placeholder='Plese text here'
@@ -61,7 +62,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName='Home'
+        initialRouteName='CreatePost'
         screenOptions={{
           headerStyle:{backgroundColor:'#965'},
           headerTintColor:'#fff',
