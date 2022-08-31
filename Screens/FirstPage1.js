@@ -1,26 +1,23 @@
 import {Text, View, Button } from 'react-native'
 import React from 'react'
-import nStyle from '../Style/nStyle'
+import { extendStyle } from '../Style/extendStyle';
 
-
-function FirstPage({ navigation}){
- 
-
-  return(
+function FirstPage({ navigation}) {
+ return(
     <>
-      <View style={nStyle.container}>
-        <Text style={nStyle.textBottomStyle}>This is FirstPage</Text>
+      <View style={extendStyle.container}>
+        <Text style={extendStyle.textTopStyle}>This is FirstPage</Text>
         <Button
         title='go to second page' 
-        onPress={() => { navigation.navigate('SecondPage')
+        onPress={() => { navigation.navigate('SecondPage1')
         }}/>
         <Button
         title='go to third page' 
-        onPress={() => { navigation.navigate('ThirdPage')
+        onPress={() => { navigation.navigate('ThirdPage1')
         }}/>
 
       </View>
-      <View style={styles.textBottomStyle}>Thai-Nichi Institute of Technology</View>
+      <View style={extendStyle.textBottomStyle}>Thai-Nichi Institute of Technology</View>
     </>
   );
 

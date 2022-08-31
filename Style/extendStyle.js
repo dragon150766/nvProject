@@ -1,6 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet} from 'react-native'
 
-const nStyle=StyleSheet.create({
+
+
+
+export const extendStyle = StyleSheet.create({
     container:{
         flex:1,
         alignItems: 'center',
@@ -18,3 +21,4 @@ const nStyle=StyleSheet.create({
         marginBottom: 16
       }
 })
+
