@@ -71,7 +71,7 @@ function ThirdPage({ navigation}){
         }}/>
 
       </View>
-      <View style={style.textBottomStyle}>Thai-Nichi Institute of Technologys</View>
+      <View style={style.textBottomStyle}>Thai-Nichi Institute of Technology</View>
     </>
   );
 
