@@ -1,121 +1,67 @@
-import { StatusBar } from 'expo-status-bar';
+import * as React from "react";
+import { Button, View, Text } from "react-native";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 
-import { StyleSheet, Text, View, Button } from 'react-native';
-
-import {NavigationContainer} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React  from 'react';
-
-
-
-
-function FirstPage({ navigation}){
- 
-
-  return(
-    <>
-      <View style={style.container}>
-        <Text style={style.textTopStyle}>This is FirstPage</Text>
-        <Button
-        title='go to second page' 
-        onPress={() => { navigation.navigate('SecondPage')
-        }}/>
-        <Button
-        title='go to third page' 
-        onPress={() => { navigation.navigate('ThirdPage')
-        }}/>
-
-      </View>
-      <View style={style.textBottomStyle}>Thai-Nichi Institute of Technology</View>
-    </>
+function Feed({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {/* <Button
+        onPress={() => navigation.navigate("Notifications")}
+        title="Go to notifications"
+      /> */}
+      <Text>Feed Screen</Text>
+    </View>
   );
-
 }
 
-function SecondPage({ navigation}){
- 
-
-  return(
-    <>
-      <View style={style.container}>
-        <Text style={style.textTopStyle}>This is SecondPage</Text>
-        <Button
-        title='go to first page' 
-        onPress={() => { navigation.navigate('FirstPage')
-        }}/>
-        <Button
-        title='go to third page' 
-        onPress={() => { navigation.navigate('ThirdPage')
-        }}/>
-
-      </View>
-      <View style={style.textBottomStyle}>Thai-Nichi Institute of Technology</View>
-    </>
+function Article({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {/* <Button onPress={() => navigation.goBack()} title="Go back home" /> */}
+      <Text>Article Screen</Text>
+    </View>
   );
-
 }
 
-function ThirdPage({ navigation}){
-
-  return(
-    <>
-      <View style={style.container}>
-        <Text style={style.textTopStyle}>This is ThirdPage</Text>
-        <Button
-        title='go to first page' 
-        onPress={() => { navigation.navigate('FirstPage')
-        }}/>
-        <Button
-        title='go to second page' 
-        onPress={() => { navigation.navigate('SecondPage')
-        }}/>
-
-      </View>
-      <View style={style.textBottomStyle}>Thai-Nichi Institute of Technology.</View>
-    </>
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem label="Help" onPress={() => alert("Link to help")} />
+    </DrawerContentScrollView>
   );
-
 }
 
+const Drawer = createDrawerNavigator();
 
-const Stack = createNativeStackNavigator();
+function MyDrawer() {
+  return (
+    <Drawer.Navigator
+      useLegacyImplementation
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions ={{
+        drawerStyle:{
+          backgroundColor:'red',
+          width:200
+        }
+      }}
+    >
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Article" component={Article} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName='FirstPage'
-        screenOptions={{
-          headerStyle:{backgroundColor:'#965'},
-          headerTintColor:'#fff',
-          headerTitleStyle:{fontWeight:'bold', fontSize:25}
-        }}
-      >
-        <Stack.Screen name='FirstPage' component={FirstPage}/>
-        <Stack.Screen name='SecondPage' component={SecondPage}/>
-        <Stack.Screen name='ThirdPage' component={ThirdPage}/>
-      </Stack.Navigator>
+      <MyDrawer />
     </NavigationContainer>
   );
 }
-
-const style = StyleSheet.create({
-    container:{
-      flex:1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    textTopStyle:{
-      fontSize: 25,
-      textAlign: 'center',
-      marginBottom: 16
-    },
-    textBottomStyle:{
-      fontSize: 16,
-      textAlign: 'center',
-      color: 'gray',
-      marginBottom: 16
-    }
-})
-
-
